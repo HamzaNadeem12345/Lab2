@@ -1,8 +1,7 @@
-
-#---------------------------------------
+# ---------------------------------------
 #  Game Mechanics
 #    Student A (team lead)
-#---------------------------------------
+# ---------------------------------------
 
 def welcome_message():
     """
@@ -11,13 +10,14 @@ def welcome_message():
     Parameters: None
     Returns: None
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-#---------------------------------------
-    
+    # ------------------------
+    print("WELCOME TO THE GAME")
+    # ------------------------
+    # ---------------------------------------
+
+
 def choose_category(categories):
     """
     Ask the player to choose a quiz category from a list of categories.
@@ -28,13 +28,29 @@ def choose_category(categories):
     Returns:
     - str: The chosen category.
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
+    print("Choose a quiz category:")
+    for index, category in enumerate(categories, start=1):
+        print(f"{index}. {category}")
 
-#---------------------------------------
+    while True:
+        try:
+            choice = int(input("Enter the number corresponding to your choice: "))
+            if 1 <= choice <= len(categories):
+                chosen_category = categories[choice - 1]
+                print(f"You've chosen '{chosen_category}' as the quiz category.")
+                return chosen_category
+            else:
+                print("Invalid choice. Please enter a valid number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+    # ------------------------
+
+
+# ---------------------------------------
 
 def display_score(score, round_number):
     """
@@ -46,14 +62,16 @@ def display_score(score, round_number):
 
     Returns: None
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
+    print(f"Round {round_number} - Current Score: {score}")
 
-#---------------------------------------
-    
+    # ------------------------
+
+
+# ---------------------------------------
+
 def game_over_message(final_score):
     """
     Display a "game over" message along with the player's final score.
@@ -63,14 +81,19 @@ def game_over_message(final_score):
 
     Returns: None
     """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
 
-#---------------------------------------
-    
+    # ------------------------
+    # Add your code here
+    # ------------------------
+    def display_game_over(final_score):
+        print("Game Over!")
+        print(f"Your Final Score: {final_score}")
+
+    # ------------------------
+
+
+# ---------------------------------------
+
 def run_game_rounds(categories):
     """
     Implement a basic loop to run the game for 5 rounds.
@@ -80,14 +103,51 @@ def run_game_rounds(categories):
 
     Returns: None
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
 
-#---------------------------------------
-        
+
+def choose_category(categories):
+    print("Choose a quiz category:")
+    for index, category in enumerate(categories, start=1):
+        print(f"{index}. {category}")
+
+    while True:
+        try:
+            choice = int(input("Enter the number corresponding to your choice: "))
+            if 1 <= choice <= len(categories):
+                chosen_category = categories[choice - 1]
+                print(f"You've chosen '{chosen_category}' as the quiz category.")
+                return chosen_category
+            else:
+                print("Invalid choice. Please enter a valid number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+
+def display_score_and_round(score, round_number):
+    print(f"Round {round_number} - Current Score: {score}")
+
+
+def run_game_rounds(categories):
+    total_rounds = 5
+    current_score = 0
+
+    for round_number in range(1, total_rounds + 1):
+        chosen_category = choose_category(categories)
+
+        current_score += 10
+        display_score_and_round(current_score, round_number)
+
+    print("Game Over!")
+    print(f"Your Final Score: {current_score}")
+
+    # ------------------------
+
+
+# ---------------------------------------
+
 def validate_answer(player_answer, correct_answer):
     """
     Validate the player's answer (correct or incorrect).
@@ -99,13 +159,17 @@ def validate_answer(player_answer, correct_answer):
     Returns:
     - bool: True if the player's answer is correct, False otherwise.
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
 
-#---------------------------------------
+
+    return player_answer.lower() == correct_answer.lower()
+
+
+# ------------------------
+
+# ---------------------------------------
 
 def update_score(score, correct):
     """
@@ -118,13 +182,19 @@ def update_score(score, correct):
     Returns:
     - int: The updated score.
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
 
-#---------------------------------------
+    if correct:
+        return score + 10
+    else:
+        return score
+
+    # ------------------------
+
+
+# ---------------------------------------
 
 def next_round(round_number):
     """
@@ -136,13 +206,16 @@ def next_round(round_number):
     Returns:
     - int: The next round number.
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
 
-#---------------------------------------
+    return round_number + 1
+
+    # ------------------------
+
+
+# ---------------------------------------
 
 def check_game_over(incorrect_answers):
     """
@@ -154,13 +227,20 @@ def check_game_over(incorrect_answers):
     Returns:
     - bool: True if the game should be over, False otherwise.
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
+    return incorrect_answers >= 3
 
-#---------------------------------------
+
+if check_game_over:
+    print("Game Over! You've reached the maximum incorrect answers.")
+else:
+    print("Continue to the next question.")
+    # ------------------------
+
+
+# ---------------------------------------
 
 def restart_or_exit():
     """
@@ -169,10 +249,21 @@ def restart_or_exit():
     Parameters: None
     Returns: None
     """
-    #------------------------
+    # ------------------------
     # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
+    # ------------------------
+    print("Game Over!")
+    user_choice = input("Do you want to restart the game? (yes/no): ").lower()
 
-#---------------------------------------
+    if user_choice == "yes":
+        print("Restarting the game...")
+
+    elif user_choice == "no":
+        print("Exiting the game. Thank you for playing!")
+        exit()
+    else:
+        print("Invalid choice. Please enter 'yes' to restart or 'no' to exit.")
+
+    # ------------------------
+
+# ---------------------------------------
